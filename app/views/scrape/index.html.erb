@@ -1,0 +1,5 @@
+<%= form_tag({:controller => "scrape", :action => "run_scrape"}, :method => "get") do %>
+  <%= label_tag(:i, "How many new records do you want to query?") %>
+  <%= text_field_tag(:i) %>
+  <%= submit_tag("SCRAPE!") %>
+<% end %>

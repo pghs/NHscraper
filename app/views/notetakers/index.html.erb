@@ -1,0 +1,28 @@
+<h1>Notehall Merchants</h1>
+
+<table>
+  <tr>
+    <th>Notehall Id</th>
+    <th>Username</th>
+    <th>Url</th>
+    <th>Sales Level</th>
+    <th>Created At</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @notetakers.each do |notetaker| %>
+  <tr>
+    <td><%= notetaker.n_id %></td>
+    <td><%= notetaker.n_username %></td>
+    <td><a href="http://www.notehall.com<%= notetaker.n_url %> "><%= notetaker.n_url %></a></td>
+    <td><%= notetaker.n_sales %></td>
+    <td><%= notetaker.created_at %></td>
+    <td><%= link_to 'Show', notetaker %></td>
+    <td><%= link_to 'Destroy', notetaker, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Scrape Users!', scrape_path %>

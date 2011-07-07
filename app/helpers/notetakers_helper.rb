@@ -1,0 +1,2 @@
+module NotetakersHelper
+end

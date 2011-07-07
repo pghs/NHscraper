@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Notetaker:</b>
+  <%= @note.notetaker_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @note.title %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @note.type %>
+</p>
+
+<p>
+  <b>Pages:</b>
+  <%= @note.pages %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @note.rating %>
+</p>
+
+<p>
+  <b>Listed:</b>
+  <%= @note.listed %>
+</p>
+
+
+<%= link_to 'Edit', edit_note_path(@note) %> |
+<%= link_to 'Back', notes_path %>

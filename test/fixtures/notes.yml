@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  notetaker_id: 1
+  title: MyString
+  type: MyString
+  pages: 1
+  rating: MyString
+  listed: MyString
+
+two:
+  notetaker_id: 1
+  title: MyString
+  type: MyString
+  pages: 1
+  rating: MyString
+  listed: MyString
