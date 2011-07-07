@@ -1,6 +1,5 @@
 class ScrapeController < ApplicationController
   def index
-
   end
 
   def run_scrape

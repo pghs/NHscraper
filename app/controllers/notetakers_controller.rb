@@ -1,5 +1,6 @@
 class NotetakersController < ApplicationController
 
+  
   # GET /notetakers
   # GET /notetakers.xml
   def index

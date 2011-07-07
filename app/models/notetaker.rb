@@ -9,14 +9,13 @@ class Notetaker < ActiveRecord::Base
 
       # Submit the login form
       my_page = page.form_with(:action => 'https://www.notehall.com/index/login') do |f|
-        f.username  = 'bderusha@brandeis.edu'
+        f.username  = ''
         f.password  = ''
       end.submit
     end
 
     for i in r do
       sleep 1
-      puts i
       merch = true
       notetaker = Notetaker.find_by_n_id(i)
       nonmerch = Nonmerchant.find_by_n_id(i)
@@ -27,7 +26,6 @@ class Notetaker < ActiveRecord::Base
           if merchant_acct.nil?
             Nonmerchant.create!(:n_id => i)
             merch = false
-            puts 'nonmerchant created!'
           else
             @page = page.parser
           end
@@ -45,7 +43,6 @@ class Notetaker < ActiveRecord::Base
             sales_level = 'less than 10'
           end
           Notetaker.create!(:n_id => i, :n_username => page_scrape.user_name, :n_url => page_scrape.url, :n_sales => sales_level)
-          puts 'merchant created!'
         end
       end
     end

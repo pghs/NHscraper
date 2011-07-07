@@ -1,6 +1,7 @@
 Notehallscraper::Application.routes.draw do
   get "scrape/index"
   get "scrape/run_scrape"
+  
 
   resources :notes
   resources :notetakers
