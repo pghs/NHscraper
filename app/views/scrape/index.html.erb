@@ -1,5 +1,49 @@
-<%= form_tag({:controller => "scrape", :action => "run_scrape"}, :method => "get") do %>
-  <%= label_tag(:i, "How many new records do you want to query?") %>
-  <%= text_field_tag(:i) %>
-  <%= submit_tag("SCRAPE!") %>
-<% end %>
+<script type="text/javascript">
+  function scrape(){
+    console.log('scraped!');
+    var batches = parseInt($('b').value);
+    var localInterval = parseInt($('l').value);
+    console.log('pre for');
+    var x = 1;
+    for(var i = 0; i< batches; i++){
+      (function() {
+        new Ajax.Request('/scrape/run_scrape/' + $('r').value + '/' + $('n').value, {
+          onCreate: function(){
+            console.log('created!');
+          },
+          onSuccess: function(){
+            console.log('Woooooo!');
+          },
+          onFailure: function(){
+            console.log('Oops! Failedddd!');
+          },
+          onComplete: function(transport){
+            console.log(transport.responseText);
+            $('scraped').insert("Batch Number "+x+" "+transport.responseText+"<br/>");
+            if(x==batches){
+              window.location = "http://localhost:3000";
+            }
+            x++;
+          }
+        });
+      }).delay(i * localInterval);
+    }
+  }
+</script>
+
+
+
+
+<%= label_tag(:r, "Number of requests per query") %>
+<%= text_field_tag(:r) %><br/>
+<%= label_tag(:b, "Number of request batches") %>
+<%= text_field_tag(:b) %><br/>
+<%= label_tag(:n, "Interval per notehall request") %>
+<%= text_field_tag(:n) %><br/>
+<%= label_tag(:l, "Interval per local request") %>
+<%= text_field_tag(:l) %><br/>
+
+<%= submit_tag("SCRAPE!", {:onclick => 'scrape()'}) %>
+
+
+<div id="scraped"></div>

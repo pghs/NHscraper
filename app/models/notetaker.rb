@@ -1,7 +1,7 @@
 class Notetaker < ActiveRecord::Base
   has_many :notes
 
-  def self.scrape_user_info(r)
+  def self.scrape_user_info(r, n)
     
     #logs you in to notehall
     a = Mechanize.new
@@ -9,13 +9,16 @@ class Notetaker < ActiveRecord::Base
 
       # Submit the login form
       my_page = page.form_with(:action => 'https://www.notehall.com/index/login') do |f|
-        f.username  = ''
-        f.password  = ''
+        f.username  = 'bderusha@brandeis.edu'
+        f.password  = 'Not@ppl3'
       end.submit
     end
 
+    logged_in = a.current_page.parser.to_s =~ /Welcome Brandeis/
+    return if logged_in.nil?
+
     for i in r do
-      sleep 1
+      sleep n
       merch = true
       notetaker = Notetaker.find_by_n_id(i)
       nonmerch = Nonmerchant.find_by_n_id(i)

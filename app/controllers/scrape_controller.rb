@@ -9,10 +9,10 @@ class ScrapeController < ApplicationController
       last_id = last_nm_id
     end
     start_r = last_id.to_i + 1
-    stop_r = last_id.to_i + params[:i].to_i
+    stop_r = last_id.to_i + params[:r].to_i
     r = (start_r..stop_r)
     puts r
-    Notetaker.scrape_user_info(r)
-    redirect_to '/notetakers'
+    Notetaker.scrape_user_info(r, params[:n].to_i)
+    render :text => 'Complete!'
   end
 end

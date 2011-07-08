@@ -7,7 +7,7 @@ Notehallscraper::Application.routes.draw do
   resources :notetakers
 
   match 'scrape' => 'scrape#index'
-  match 'scrape/run_scrape/:i' => 'scrape#run_scrape'
+  match 'scrape/run_scrape/:r/:n' => 'scrape#run_scrape'
 
   root :to => "notetakers#index"
 
