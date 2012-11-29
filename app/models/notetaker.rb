@@ -9,8 +9,8 @@ class Notetaker < ActiveRecord::Base
 
       # Submit the login form
       my_page = page.form_with(:action => 'https://www.notehall.com/index/login') do |f|
-        f.username  = 'bderusha@brandeis.edu'
-        f.password  = 'Not@ppl3'
+        f.username  = 'test@test.com' #replace with initializer
+        f.password  = 'password' #replace with initializer
       end.submit
     end
 
